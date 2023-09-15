@@ -1,6 +1,5 @@
 
 const arrayDoadores = []
-const tiposSanguineos = ["AB+","AB-","A+","A-","B+","B-","O+","O-"]
 //===================//=====================//====================//=========
 const cadastrarDoador = () => {
 const nome = prompt("Informe seu nome completo!")
@@ -25,15 +24,13 @@ let lista = `
 LISTA DE DOADORES:
 -----------------------
 NOME               | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
-----------------------------------------------------------------------
-`
+------------------------------------------------------------------------------`
 for (let i=0 ; i < arrayDoadores.length; i++){
  const {nome, idade, peso, tipoSang, ultimaDoacao} = arrayDoadores[i]
-lista += 
-`${nome.padEnd(20)}|${idade.padStart(6).padEnd(10)}|${peso.padStart(6).padEnd(9)}|${tipoSang.padStart(15).padEnd(27)}|${ultimaDoacao.padStart(15)}\n`   
+lista += `${nome.padEnd(20)}|${idade.padStart(6).padEnd(10)}|${peso.padStart(6).padEnd(9)}|${tipoSang.padStart(15).padEnd(27)}|${ultimaDoacao.padStart(15)}\n`   
 }
 lista += `
-----------------------------------------------------------------------`
+------------------------------------------------------------------------------`
 prompt(lista)
 menu()
 }
@@ -42,7 +39,7 @@ const buscarPorTipoSangue = () => {
 const tipoSang = prompt("Digite o tipo sanguíneo desejado:").toUpperCase()
 const listaDoadores = []
 for(let i = 0; i < arrayDoadores.length; i++){
-if (tiposSanguineos.includes(tipoSang)){
+if (arrayDoadores[i].tipoSang === tipoSang){
 listaDoadores.push(arrayDoadores[i])
 }
 }
@@ -55,15 +52,13 @@ NOME               | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
 `
 for (let i=0 ; i < listaDoadores.length; i++){
  const {nome, idade, peso, tipoSang, ultimaDoacao} = listaDoadores[i]
-lista += 
-`${nome.padEnd(20)}|${idade.padStart(6).padEnd(10)}|${peso.padStart(6).padEnd(9)}|${tipoSang.padStart(15).padEnd(27)}|${ultimaDoacao.padStart(15)}\n`   
+lista += `${nome.padEnd(20)}|${idade.padStart(6).padEnd(10)}|${peso.padStart(6).padEnd(9)}|${tipoSang.padStart(15).padEnd(27)}|${ultimaDoacao.padStart(15)}\n`   
 }
 lista += `
 ----------------------------------------------------------------------`
 prompt(lista)
 menu()
 }
-
 //===============//===================//================//============= 
 const buscarPorData = () => {
 const ultimaDoacao = prompt("Digite a data desejada (dd/mm/aaaa):")
@@ -82,17 +77,14 @@ NOME               | IDADE | PESO | TIPO SANGUÍNEO | ÚLTIMA DOAÇÃO
 `
 for (let i=0 ; i < porData.length; i++){
  const {nome, idade, peso, tipoSang, ultimaDoacao} = porData[i]
-lista +=
-`${nome.padEnd(20)}|${idade.padStart(6).padEnd(10)}|${peso.padStart(6).padEnd(9)}|${tipoSang.padStart(15).padEnd(27)}|${ultimaDoacao.padStart(15)}\n`   
+lista += `${nome.padEnd(20)}|${idade.padStart(6).padEnd(10)}|${peso.padStart(6).padEnd(9)}|${tipoSang.padStart(15).padEnd(27)}|${ultimaDoacao.padStart(15)}\n`   
 }
 lista += `
 ----------------------------------------------------------------------`
 prompt(lista)
 menu()
 }
-
 //================//==================//================//==============
-
 const menu = () => {
 const opcoes = Number(prompt(`
 =====SISTEMA DE CADASTRO DE DOADORES DE SANGUE =====
